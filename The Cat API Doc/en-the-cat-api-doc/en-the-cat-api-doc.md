@@ -80,7 +80,7 @@ curl --location --request POST 'https://api.thecatapi.com/v1/images/upload' \
 
 🐱 **`GET /images/{image_id}`** `https://api.thecatapi.com/v1/images/{{image_id}}`
 
-This endpoint **search** the image corresponding to **_path param_** 'image_id'.
+This endpoint **searches** the image corresponding to **_path param_** 'image_id'.
 
 ### **Request example:** 
 
@@ -115,7 +115,7 @@ curl --location --request GET 'https://api.thecatapi.com/v1/images/6qmirugX0' \
 
 🐱 **`GET /images`** `https://api.thecatapi.com/v1/images`
 
-This endpoint **fetch** all images uploaded to your account by '/images/upload'.
+This endpoint **fetches** all images uploaded to your account by '/images/upload'.
 
 Filter the results using the 'query' parameters below:
 
