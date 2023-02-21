@@ -20,7 +20,7 @@ Con la API de Cat, puede:
 # Endpoints
 
 >
-> Consulte cada punto de enlace, sus formularios de solicitud y ejemplos de _responses_.
+> Consulte cada endpoint, sus formularios de solicitud y ejemplos de _responses_.
 
 ## POST
 
