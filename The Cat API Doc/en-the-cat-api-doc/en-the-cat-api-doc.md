@@ -20,13 +20,13 @@ With The Cat API, you can:
 # Endpoints
 
 >
-> Confira abaixo cada endpoint, suas formas de requisição e exemplos de _respostas_. 
+> Check out each endpoint, its request forms and examples of _responses_. 
 
 ## POST
 
 🐱 **`POST / Images / Upload`** `https://api.thecatapi.com/v1/images/upload`
 
-Este endpoint **insere** uma nova imagem no sistema carregando um arquivo **válido** de imagem de gato, do tipo:
+This endpoint **inserts** a new image into the system by uploading a cat image file **valid** of type:
 
 - .gif
 - .jpg
@@ -34,13 +34,13 @@ Este endpoint **insere** uma nova imagem no sistema carregando um arquivo **vál
 
 **Request body**
 
-| Nome | Descrição | Tipo | Obrigatório |
+| Name | Description | Type | Required |
 |------|-----------|------|-------------|
-| `file` | Arquivo em .gif, .png, ou .jpg | `file` | Sim |
-| `sub_id` | ID para identificação interna. | `string` | Não |
+| `file` | File in .gif, .png, or .jpg | `file` | Yes |
+| `sub_id` | ID for internal identification | `string` | No |
 
 
-### **Exemplo de requisição:** 
+### **Request example:**
 
 ```
 curl --location --request POST 'https://api.thecatapi.com/v1/images/upload' \
@@ -50,9 +50,9 @@ curl --location --request POST 'https://api.thecatapi.com/v1/images/upload' \
 
 ![Mia](https://user-images.githubusercontent.com/105396649/207432035-c638a387-f243-4983-8af5-fcf7e0c94011.jpg)
 
-😻 A resposta de código `201 Created` indica que o registro da imagem foi criado com sucesso. Retorna um JSON incluindo o novo ID.
+😻 The code response '201 Created' indicates that the image record was successfully created. Returns a JSON including the new ID.
 
-### **Exemplo de _response body_:**
+### **Example of _response body_:**
 
 ``` json
 {
@@ -66,7 +66,7 @@ curl --location --request POST 'https://api.thecatapi.com/v1/images/upload' \
 }
 ```
 
-### **Respostas de erro:**
+### **Error responses:**
 
 -  `400 Bad request` Invalid file data. Check you are sending the formdata.append('file', ...} format'.
 
@@ -80,9 +80,9 @@ curl --location --request POST 'https://api.thecatapi.com/v1/images/upload' \
 
 🐱 **`GET /images/{image_id}`** `https://api.thecatapi.com/v1/images/{{image_id}}`
 
-Este endpoint **busca** a imagem correspondente ao **_path param_** `image_id`.
+This endpoint **search** the image corresponding to **_path param_** 'image_id'.
 
-### **Exemplo de requisição:** 
+### **Request example:** 
 
 ```
 curl --location --request GET 'https://api.thecatapi.com/v1/images/6qmirugX0' \
@@ -91,9 +91,9 @@ curl --location --request GET 'https://api.thecatapi.com/v1/images/6qmirugX0' \
 
 ![Mia2](https://user-images.githubusercontent.com/105396649/207641262-48edba35-f423-4835-84ce-7f9109237485.jpg)
 
-😻 A resposta de código `200 OK` indica que a consulta foi executada com sucesso. Ela retorna um JSON com todas as informações da imagem.
+😻 The code response '200 OK' indicates that the query was executed successfully. It returns a JSON with all the image information.
 
-### **Exemplo de _reponse body_:**
+### **Example of _reponse body_:**
 
 ``` json
 
@@ -107,32 +107,32 @@ curl --location --request GET 'https://api.thecatapi.com/v1/images/6qmirugX0' \
 
 ```
 
-### **Resposta de erro:**
+### **Error response:**
 
--  `400 Bad request`Couldn't find an image matching the passed 'id' of xxxxx. Caso o `image_id` inserido estivesse incorreto. 
+-  '400 Bad request'Couldn't find an image matching the passed 'id' of xxxxx. If the inserted image_id was incorrect. 
 
 ## GET your uploaded images 
 
 🐱 **`GET /images`** `https://api.thecatapi.com/v1/images`
 
-Este endpoint **busca** todas as imagens enviadas para sua conta via `/images/upload`.
+This endpoint **fetch** all images uploaded to your account by '/images/upload'.
 
-Filtre os resultados através dos parâmetros `query` abaixo:
+Filter the results using the 'query' parameters below:
 
-| Parâmetro |    Descrição      | Tipo | Obrigatório |
+| Parameter |    Description      | Type | Required | 
 |------------|--------------------|------|------------|
-| `limit`  | Número de resultados a serem retornados. O valor máximo é 25. O padrão é 1. | `integer` | Sim |
-| `mime_types` | Os tipos de imagem a serem retornados: .gif, .jpg, ou .png. Retorna todos os tipos como padrão. | `string` delimitado por vírgulas. | Não |
-| `order` | A ordem de retorno: RANDOM, ASC ou DESC. O padrão é RANDOM. | `string` | Não  |
+| `limit`  | Number of results to return. The maximum value is 25. The default is 1. | `integer` | Yes |
+| `mime_types` | The types of images to return: .gif, .jpg, or .png. Returns all types as default. | `string` commas-delimited. | No |
+| `order` | Return order: RANDOM, ASC, or DESC. The default is RANDOM. | `string` | No  |
 
-### **Exemplo de _requisição_ com parâmetros `limit` 25 e `order` ASC:**
+### **Example of _request_ with parameters 'limit' 25 and 'order' ASC:**
 
 ``` 
 curl --location --request GET 'https://api.thecatapi.com/v1/images?limit=25&order=ASC' \
 --header 'x-api-key: live_g6EUZSGbkMsKSuQm1OyWDVeLrLSnoCMcps2f7BMcDq6Alt2Y9Z606aj1uF6sPF35'
 ```
 
-### **Exemplo de _response body_:**
+### **Example of _response body_:**
 
 ``` json
 [
@@ -166,9 +166,9 @@ curl --location --request GET 'https://api.thecatapi.com/v1/images?limit=25&orde
 
 🐱 **`DELETE /images/{image_id}`** `https://api.thecatapi.com/v1/images/{{image_id}}`
 
-Este endpoint **deleta** a imagem correspondente ao parâmetro `image_id` passado como parâmetro `path`.
+This endpoint **deletes** the image corresponding to the 'image_id' parameter passed as the 'path' parameter.
 
-### **Exemplo de _requisição_:**
+### **Example of _request_:**
 
 ``` 
 curl --location --request DELETE 'https://api.thecatapi.com/v1/images/FBqMvFgx5' \
@@ -178,9 +178,9 @@ curl --location --request DELETE 'https://api.thecatapi.com/v1/images/FBqMvFgx5'
 ![Mia 3](https://user-images.githubusercontent.com/105396649/207685891-74ba01fd-4ff1-4953-a095-41d839b3c02c.jpg)
 
 
-😻 A resposta de código `204 No Content` indica que a exclusão foi executada com sucesso. Ela retorna um JSON vazio.
+😻 The code response '204 No Content' indicates that the deletion was successfully performed. It returns an empty JSON.
 
 
-### **Resposta de erro:**
+### **Error response:**
 
--  `400 Bad request` INVALID_DATA. Caso o `image_id` esteja inserido incorretamente.
+-  '400 Bad request' INVALID_DATA. If the 'image_id' is entered incorrectly.
